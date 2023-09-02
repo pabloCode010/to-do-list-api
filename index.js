@@ -6,6 +6,7 @@ require("dotenv").config();
 const router = require('./src/routes/router');
 const morgan = require('morgan');
 const connect = require('./src/database/connect');
+const handler = require('./src/err/handler');
 
 const port = process.env.PORT || 3000;
 
@@ -13,6 +14,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.use("/api/to-do-list", router);
+
+app.use(handler);
 
 start();
 
