@@ -7,7 +7,7 @@ async function all(req, res){
 }
 
 async function create(req, res){
-    req.body.date = Date(req.body.date);
+    req.body.date = new Date(req.body.date);
     const newTask = new task(req.body);
     const savedTask = await newTask.save();
     res.status(201).json(savedTask);
